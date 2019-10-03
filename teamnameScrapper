@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+
+import scrapy
+
+
+class TeamnamesSpider(scrapy.Spider):
+    name = 'teamnames'
+    allowed_domains = ['https://www.predictz.com/']
+    start_urls = ['http://https://www.predictz.com/predictions/tomorrow//']
+
+    def parse(self, response):
+        return response.css(".ptgame a::text").extract()

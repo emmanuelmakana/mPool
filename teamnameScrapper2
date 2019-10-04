@@ -1,0 +1,12 @@
+import scrapy
+
+class TeamNameScrapper(scrapy.Spider):
+    name = "teamnames"
+    allowed_domain = ["https://www.predictz.com/predictions/"]
+    start_url = ["https://www.predictz.com/predictions/"]
+    
+
+    def parse(self, response):
+        #extract data using css selectors
+        Tnames = response.css(".ptgame a::text").extract()
+        yield Tnames
